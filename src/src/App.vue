@@ -66,7 +66,7 @@
     
     <Page :fitContent="true" class="footer">
       <div>
-        <p>Hand crafted with <span style="color: #ff000057;">&lt;3</span> by <a v-for="(developer, i) in developers" :key="i" :href="developer.url">{{developer.name}}{{i === developers.length - 1 ? '' : ', '}}</a>. (c) 2019</p>
+        <p>Hand crafted with <span style="color: #ff000057;">&lt;3</span> by <a v-for="(developer, i) in developers" :key="i" :href="developer.url">{{developer.name}}{{i === developers.length - 1 ? '' : ', '}}</a>. (c) 2020</p>
       </div>
     </Page>
   </div>
@@ -104,14 +104,6 @@ export default {
         {
           name: 'PLASMAchicken',
           url: 'https://github.com/PLASMAchicken'
-        },
-        {
-          name: 'Lamington',
-          url: 'https://github.com/Lamingtonn'
-        },
-        {
-          name: 'AWhiteFox',
-          url: 'https://github.com/AWhiteFox'
         }
       ],
       settings: {},
