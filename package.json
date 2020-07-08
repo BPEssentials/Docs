@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "typeface-lato": "0.0.75",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10",
+    "execa": "latest"
+  }
+}
