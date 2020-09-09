@@ -77,7 +77,8 @@
 import Page from './components/Page';
 import MainText from './components/MainText';
 import Title from './components/Title';
-import Ribbon from './components/Ribbon'
+import Ribbon from './components/Ribbon';
+import jsonc from 'strip-json-comments';
 
 export default {
   name: 'app',
@@ -113,7 +114,7 @@ export default {
   },
   methods: {
     fetch(url, options) {
-      return fetch(url, options).then(response => response.json());
+      return fetch(url, options).then(response => response.text()).then(text => JSON.parse(jsonc(text)));
     },
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
