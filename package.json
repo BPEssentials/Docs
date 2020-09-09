@@ -8,17 +8,17 @@
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.11",
     "strip-json-comments": "^3.1.1",
     "typeface-lato": "0.0.75",
-    "vue": "^2.6.10"
+    "vue": "^2.6.12"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "node-sass": "^4.9.0",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
+    "execa": "latest",
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10",
-    "execa": "latest"
+    "vue-template-compiler": "^2.6.12"
   }
 }
