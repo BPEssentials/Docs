@@ -11,7 +11,7 @@
 <script>
 import { defineComponent, toRefs } from 'vue';
 import MainTitle from './MainTitle.vue';
-import Divider from './Divider.vue';
+import Divider from './PageDivider.vue';
 
 export default defineComponent({
   name: 'Page',

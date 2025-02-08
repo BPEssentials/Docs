@@ -1,64 +1,77 @@
 <template>
-    <Ribbon :url="gitFullUrl"/>
+  <Ribbon :url="gitFullUrl" />
 
-    <Page :divider="false" :fitContent="false" id="main">
-      <div class="content noselect">
-        <h1 class="title">Broke Protocol: Essentials</h1>
-        <h2 class="main-sub">{{github.description}}</h2>
+  <Page :divider="false" :fitContent="false" id="main">
+    <div class="content noselect">
+      <h1 class="title">Broke Protocol: Essentials</h1>
+      <h2 class="main-sub">{{ github.description }}</h2>
+    </div>
+  </Page>
+
+  <Page class="info small">
+    <div class="info-content">
+      <a href="https://www.codacy.com/gh/BPEssentials/Core"><img
+          src="https://api.codacy.com/project/badge/Grade/c3005ebae8e24c38ad8425928b847540"></a>
+      <p>// Stargazers: <code>{{ github.stargazers_count }}</code> // Watchers:
+        <code>{{ github.subscribers_count }}</code>
+        // Open Issues: <code>{{ github.open_issues }}</code> // License:
+        <code>{{ (github.license || { name: 'Unknown' }).name }}</code>
+      </p>
+    </div>
+  </Page>
+
+  <Page title="# About">
+    <MainText>BP:Essentials (also known as BPE) is a plugin used by server owners to make it easier to moderate their
+      server. BPE Also has some commands for players like /kits and /warps, so for everyone there is something you can
+      use. {{ commandsLength }} commands defined, and counting. </MainText>
+  </Page>
+
+  <Page small title="# Installation">
+    <MainText>
+      <div>
+        <MainTitle xs>Installing the plugin (v3.0+)</MainTitle>
+        <p>
+          1. Download the latest version from <a :href="gitFullUrl + 'releases/latest'">here</a>. The file should be
+          named "BPEssentials.dll".
+          2. Download BP-CoreLib from <a href="https://github.com/UserR00T/BP-CoreLib/releases/latest">here</a>. This is
+          required by BP Essentials. The file should be named "BP-CoreLib.dll".
+          3. Move all 3 just downloaded files to "YourServerFolder/Plugins". Replace if needed. Once done, start your
+          server and the files should automatically be generated.
+        </p>
       </div>
-    </Page>
+    </MainText>
+  </Page>
 
-    <Page class="info small">
-      <div class="info-content">
-        <a href="https://www.codacy.com/gh/BPEssentials/Core"><img src="https://api.codacy.com/project/badge/Grade/c3005ebae8e24c38ad8425928b847540"></a>
-        <p>// Stargazers: <code>{{github.stargazers_count}}</code> // Watchers: <code>{{github.subscribers_count}}</code> // Open Issues: <code>{{github.open_issues}}</code> // License: <code>{{(github.license || {name: 'Unknown'}).name}}</code></p>
-      </div>
-    </Page>
+  <Page small title="# Downloads">
+    <MainText>Latest download: <a :href="gitFullUrl + 'releases/latest'">v{{ version }}</a>
+      View all downloads: <a :href="gitFullUrl + 'releases/'">here</a>
+    </MainText>
+  </Page>
 
-    <Page title="# About">
-      <MainText>BP:Essentials (also known as BPE) is a plugin used by server owners to make it easier to moderate their server. BPE Also has some commands for players like /kits and /warps, so for everyone there is something you can use. {{commandsLength}} commands defined, and counting. </MainText>
-    </Page>
-
-    <Page small title="# Installation">
-      <MainText>
-        <div>
-          <MainTitle xs>Installing the plugin (v3.0+)</MainTitle>
-          <p>
-            1. Download the latest version from <a :href="gitFullUrl + 'releases/latest'">here</a>. The file should be named "BPEssentials.dll".
-            2. Download BP-CoreLib from <a href="https://github.com/UserR00T/BP-CoreLib/releases/latest">here</a>. This is required by BP Essentials. The file should be named "BP-CoreLib.dll".
-            3. Move all 3 just downloaded files to "YourServerFolder/Plugins". Replace if needed. Once done, start your server and the files should automatically be generated.
-          </p>
-        </div>
-      </MainText>
-    </Page>
-
-    <Page small title="# Downloads">
-      <MainText>Latest download: <a :href="gitFullUrl + 'releases/latest'">v{{version}}</a>
-        View all downloads: <a :href="gitFullUrl + 'releases/'">here</a>
-      </MainText>
-    </Page>
-
-    <Page small title="# Commands" v-if="settings">
-      <MainText>
-        <table>
-          <thead>
+  <Page small title="# Commands" v-if="settings">
+    <MainText>
+      <table>
+        <thead>
           <tr>
             <th>Name</th>
             <th>Commands</th>
             <th>Permissions</th>
           </tr>
-        </thead>  <tbody>
+        </thead>
+        <tbody>
           <tr v-for="(cmd, i) in settings.Commands" :key="i">
-            <td>{{cmd.CommandName}}</td>
-            <td><code v-for="(c, i) in cmd.Commands" :key="i">{{c}}{{i === cmd.Commands.length - 1 ? '' : ', '}}</code></td>
-            <td>bpe.{{cmd.CommandName.toLowerCase()}}</td>
+            <td>{{ cmd.CommandName }}</td>
+            <td><code v-for="(c, i) in cmd.Commands"
+                :key="i">{{ c }}{{ i === cmd.Commands.length - 1 ? '' : ', ' }}</code>
+            </td>
+            <td>bpe.{{ cmd.CommandName.toLowerCase() }}</td>
           </tr>
         </tbody>
-        </table>
-      </MainText>
-    </Page>
+      </table>
+    </MainText>
+  </Page>
 
-    <!-- TODO: These two still need to be done
+  <!-- TODO: These two still need to be done
     <Page small title="# Features">
       <MainText></MainText>
     </Page>
@@ -67,11 +80,13 @@
       <MainText></MainText>
     </Page> -->
 
-    <Page :fitContent="true" class="footer">
-      <div>
-        <p>Hand crafted with <span style="color: #ff000057;">&lt;3</span> by <a v-for="(developer, i) in developers" :key="i" :href="developer.url">{{developer.name}}{{i === developers.length - 1 ? '' : ', '}}</a>. (c) 2020</p>
-      </div>
-    </Page>
+  <Page :fitContent="true" class="footer">
+    <div>
+      <p>Hand crafted with <span style="color: #ff000057;">&lt;3</span> by <a v-for="(developer, i) in developers"
+          :key="i" :href="developer.url">{{ developer.name }}{{ i === developers.length - 1 ? '' : ', ' }}</a>. (c) 2020
+      </p>
+    </div>
+  </Page>
 </template>
 
 <script>
@@ -80,6 +95,7 @@ import MainText from '@/components/MainText.vue';
 import MainTitle from '@/components/MainTitle.vue';
 import Ribbon from '@/components/Ribbon.vue';
 import jsonc from 'strip-json-comments';
+import WAVE from 'vanta/dist/vanta.waves.min'
 
 export default {
   name: 'app',
@@ -145,7 +161,7 @@ export default {
     this.shuffleArray(this.developers);
   },
   mounted() {
-    VANTA.WAVES({
+    WAVE({
       el: "#main",
       color: '#751118',
       shininess: 13.00,
@@ -165,6 +181,7 @@ export default {
 ul {
   padding-left: 0;
   list-style-type: none;
+
   &.contact li {
     display: inline;
   }
@@ -174,9 +191,11 @@ ul {
   width: map.get($scrollbar, width);
   height: map.get($scrollbar, height);
 }
+
 ::-webkit-scrollbar-thumb {
   background: map.get($scrollbar, thumb);
 }
+
 ::-webkit-scrollbar-track {
   background: map.get($scrollbar, track);
 }
@@ -184,10 +203,12 @@ ul {
 * {
   color: map.get($colors, text-default);
 }
+
 a[href] {
   text-decoration: none;
   color: map.get($colors, href);
 }
+
 p {
   white-space: pre-line;
 }
@@ -196,28 +217,37 @@ p {
 table {
   margin: 0 5% 0 0;
   width: 100%;
+
   th {
     text-align: left;
     background-color: map.get($colors, table-header);
   }
-  td, th {
+
+  td,
+  th {
     padding: 8px;
   }
+
   td {
     border-bottom: 1px solid map.get($colors, table-border);
+
     @media (max-width: 780px) {
       font-size: 0.8em;
     }
   }
-  > tr:last-child > td {
+
+  >tr:last-child>td {
     border-bottom: 0;
   }
+
   td:nth-child(1) {
     max-width: 2vw;
   }
+
   td:nth-child(2) {
     max-width: 15vw;
   }
+
   tr:hover {
     background-color: color.adjust(map.get($colors, background), $lightness: -1%);
   }
@@ -231,6 +261,7 @@ table {
     >* {
       margin: 7px 0 5px;
     }
+
     p {
       padding: 2px 20px;
 
@@ -244,10 +275,12 @@ table {
   }
 }
 
-.footer, .small {
+.footer,
+.small {
   .fit-content {
     padding-bottom: 0;
   }
+
   p {
     text-align: center;
     color: map.get($colors, footer-text);
@@ -268,11 +301,11 @@ table {
 
 .noselect {
   -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -280,10 +313,12 @@ body {
   background-color: map.get($colors, background);
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
+
 #main {
   padding: 20vh 0 0;
 }

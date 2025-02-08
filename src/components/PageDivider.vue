@@ -1,10 +1,10 @@
 <template>
-  <div class="divider"></div>
+  <div class="pagedivider"></div>
 </template>
 
 <script>
 export default {
-  name: 'divider'
+  name: 'PageDivider'
 }
 </script>
 
@@ -12,7 +12,7 @@ export default {
 @use "sass:map";
 @use "@/scss/global.scss" as *;
 
-.divider {
+.pagedivider {
   height: 3px;
   width: 100%;
   background-color: map.get($colors, divider);
