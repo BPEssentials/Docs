@@ -1,5 +1,4 @@
 <template>
-  <div id="app">
     <Ribbon :url="gitFullUrl"/>
 
     <Page :divider="false" :fitContent="false" id="main">
@@ -23,7 +22,7 @@
     <Page small title="# Installation">
       <MainText>
         <div>
-          <Title xs>Installing the plugin (v3.0+)</Title>
+          <MainTitle xs>Installing the plugin (v3.0+)</MainTitle>
           <p>
             1. Download the latest version from <a :href="gitFullUrl + 'releases/latest'">here</a>. The file should be named "BPEssentials.dll".
             2. Download BP-CoreLib from <a href="https://github.com/UserR00T/BP-CoreLib/releases/latest">here</a>. This is required by BP Essentials. The file should be named "BP-CoreLib.dll".
@@ -42,21 +41,24 @@
     <Page small title="# Commands" v-if="settings">
       <MainText>
         <table>
+          <thead>
           <tr>
             <th>Name</th>
             <th>Commands</th>
             <th>Permissions</th>
           </tr>
+        </thead>  <tbody>
           <tr v-for="(cmd, i) in settings.Commands" :key="i">
             <td>{{cmd.CommandName}}</td>
             <td><code v-for="(c, i) in cmd.Commands" :key="i">{{c}}{{i === cmd.Commands.length - 1 ? '' : ', '}}</code></td>
             <td>bpe.{{cmd.CommandName.toLowerCase()}}</td>
           </tr>
+        </tbody>
         </table>
       </MainText>
     </Page>
 
-    <!-- TODO: These two still need to be done 
+    <!-- TODO: These two still need to be done
     <Page small title="# Features">
       <MainText></MainText>
     </Page>
@@ -64,20 +66,19 @@
     <Page small title="# FAQ">
       <MainText></MainText>
     </Page> -->
-    
+
     <Page :fitContent="true" class="footer">
       <div>
         <p>Hand crafted with <span style="color: #ff000057;">&lt;3</span> by <a v-for="(developer, i) in developers" :key="i" :href="developer.url">{{developer.name}}{{i === developers.length - 1 ? '' : ', '}}</a>. (c) 2020</p>
       </div>
     </Page>
-  </div>
 </template>
 
 <script>
-import Page from './components/Page';
-import MainText from './components/MainText';
-import Title from './components/Title';
-import Ribbon from './components/Ribbon';
+import Page from '@/components/Page.vue';
+import MainText from '@/components/MainText.vue';
+import MainTitle from '@/components/MainTitle.vue';
+import Ribbon from '@/components/Ribbon.vue';
 import jsonc from 'strip-json-comments';
 
 export default {
@@ -85,7 +86,7 @@ export default {
   components: {
     Page,
     MainText,
-    Title,
+    MainTitle,
     Ribbon
   },
   data() {
@@ -141,7 +142,7 @@ export default {
     this.github = await this.fetch(`${this.git.urlApi}repos/${this.git.repo.slice(0, -1)}`);
 
     // It's the little things that count :)
-    this.shuffleArray(this.developers);  
+    this.shuffleArray(this.developers);
   },
   mounted() {
     VANTA.WAVES({
@@ -157,7 +158,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/global.scss";
+@use "@/scss/global.scss" as *;
+@use "sass:color";
+@use "sass:map";
 
 ul {
   padding-left: 0;
@@ -168,22 +171,22 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  width: map-get($scrollbar, width);
-  height: map-get($scrollbar, height);
+  width: map.get($scrollbar, width);
+  height: map.get($scrollbar, height);
 }
 ::-webkit-scrollbar-thumb {
-  background: map-get($scrollbar, thumb);
+  background: map.get($scrollbar, thumb);
 }
 ::-webkit-scrollbar-track {
-  background: map-get($scrollbar, track);
+  background: map.get($scrollbar, track);
 }
 
 * {
-  color: map-get($colors, text-default);
+  color: map.get($colors, text-default);
 }
 a[href] {
   text-decoration: none;
-  color: map-get($colors, href);
+  color: map.get($colors, href);
 }
 p {
   white-space: pre-line;
@@ -195,14 +198,14 @@ table {
   width: 100%;
   th {
     text-align: left;
-    background-color: map-get($colors, table-header);
+    background-color: map.get($colors, table-header);
   }
   td, th {
     padding: 8px;
   }
   td {
-    border-bottom: 1px solid map-get($colors, table-border);
-    @media (max-width: 780px) {   
+    border-bottom: 1px solid map.get($colors, table-border);
+    @media (max-width: 780px) {
       font-size: 0.8em;
     }
   }
@@ -216,7 +219,7 @@ table {
     max-width: 15vw;
   }
   tr:hover {
-    background-color: darken(map-get($colors, background), 1%);
+    background-color: color.adjust(map.get($colors, background), $lightness: -1%);
   }
 }
 
@@ -232,7 +235,7 @@ table {
       padding: 2px 20px;
 
       code {
-        background-color: darken(map-get($colors, background), 1%);
+        background-color: color.adjust(map.get($colors, background), $lightness: -1%);
         border-radius: 3px;
         font-family: courier, monospace;
         padding: 0 3px;
@@ -247,12 +250,12 @@ table {
   }
   p {
     text-align: center;
-    color: map-get($colors, footer-text);
+    color: map.get($colors, footer-text);
   }
 }
 
 .main-sub {
-  font-family: map-get($fonts, main-sub);
+  font-family: map.get($fonts, main-sub);
   font-size: 2em;
   font-weight: 100;
 }
@@ -274,7 +277,7 @@ table {
 
 body {
   overflow-x: hidden;
-  background-color: map-get($colors, background);
+  background-color: map.get($colors, background);
 }
 
 html, body {
@@ -286,7 +289,7 @@ html, body {
 }
 
 #app {
-  font-family: map-get($fonts, main);
+  font-family: map.get($fonts, main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

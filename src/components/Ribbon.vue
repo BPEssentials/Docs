@@ -21,11 +21,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/global.scss";
+@use "sass:map";
+@use "@/scss/global.scss" as *;
 
 svg {
-  fill: map-get($colors, ribbon-fill);
-  color:map-get($colors, ribbon-color);
+  fill: map.get($colors, ribbon-fill);
+  color:map.get($colors, ribbon-color);
   position: fixed;
   top: 0;
   border: 0;

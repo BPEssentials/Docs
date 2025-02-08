@@ -5,12 +5,14 @@
 </template>
 
 <script>
-export default {
-  name: 'main-text'
-}
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'MainText'
+});
 </script>
 
-<style>
+<style scoped>
 .text {
   margin: 0 5%;
   font-size: 1.4em;

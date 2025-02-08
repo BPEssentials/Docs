@@ -1,24 +1,26 @@
 {
-  "name": "docs",
-  "version": "0.1.0",
+  "name": "bpe-docs",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
-    "core-js": "^2.6.11",
-    "strip-json-comments": "^3.1.1",
-    "typeface-lato": "0.0.75",
-    "vue": "^2.6.12"
+    "typeface-lato": "^1.1.13",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
-    "execa": "latest",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.12"
+    "@eslint/js": "^9.18.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "eslint": "^9.18.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "sass-embedded": "^1.83.4",
+    "vite": "^6.0.11",
+    "vite-plugin-vue-devtools": "^7.7.1"
   }
 }

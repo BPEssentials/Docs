@@ -9,11 +9,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/global.scss";
+@use "sass:map";
+@use "@/scss/global.scss" as *;
 
 .divider {
   height: 3px;
   width: 100%;
-  background-color: map-get($colors, divider);
+  background-color: map.get($colors, divider);
 }
 </style>

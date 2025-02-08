@@ -2,48 +2,41 @@
   <div>
     <Divider v-show="divider"/>
     <div :class="{ 'full': !fitContent, 'fit-content': fitContent }">
-      <Title :sub="sub" :small="small" :xs="xs" v-show="title">{{title}}</Title>
+      <MainTitle :sub="sub" :small="small" :xs="xs" v-show="title">{{title}}</MainTitle>
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-import Title from './Title';
-import Divider from './Divider';
-export default {
-  name: 'page',
+import { defineComponent, toRefs } from 'vue';
+import MainTitle from './MainTitle.vue';
+import Divider from './Divider.vue';
+
+export default defineComponent({
+  name: 'Page',
   components: {
-    Title,
+    MainTitle,
     Divider
   },
   props: {
-      title: {
-        default: undefined,
-        type: String
-      },
-      small: {
-        default: false,
-        type: Boolean
-      },
-      sub: {
-        default: false,
-        type: Boolean
-      },
-      xs: {
-        default: false,
-        type: Boolean
-      },
-      fitContent: {
-        default: true,
-        type: Boolean
-      },
-      divider: {
-        default: true,
-        type: Boolean
-      }
+    title: String,
+    small: Boolean,
+    sub: Boolean,
+    xs: Boolean,
+    fitContent: {
+      type: Boolean,
+      default: true
+    },
+    divider: {
+      type: Boolean,
+      default: true
+    }
+  },
+  setup(props) {
+    return { ...toRefs(props) };
   }
-}
+});
 </script>
 
 <style>

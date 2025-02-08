@@ -27,11 +27,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/global.scss";
+@use "sass:map";
+@use "@/scss/global.scss" as *;
 
 .title {
   margin-left: 10px;
-  font-family: map-get($fonts, title);
+  font-family: map.get($fonts, title);
   font-size: 5em;
   font-weight: 100;
   &.small {
@@ -43,7 +44,7 @@ export default {
   &.xs {
     font-size: 1.5em;
   }
-  @media (max-width: 700px) { 
+  @media (max-width: 700px) {
     font-size: 4em;
     &.small {
       font-size: 2.5em;
@@ -56,7 +57,7 @@ export default {
     }
   }
 
-  @media (max-width: 500px) { 
+  @media (max-width: 500px) {
     font-size: 3em;
     &.small {
       font-size: 1.5em;
