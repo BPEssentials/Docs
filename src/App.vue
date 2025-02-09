@@ -149,6 +149,14 @@ export default {
       ],
       extra_permissions: [
         {
+          permission: 'bpe.receivestaffchat',
+          note: 'Required to receive staff chat'
+        },
+        {
+          permission: 'bpe.reload',
+          note: 'Required to reload Plugin via /essentials reload'
+        },
+        {
           permission: 'bpe.warnlist.viewotherplayers',
           note: 'Required to view warns of other Players'
         },
