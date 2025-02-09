@@ -66,7 +66,7 @@
       </table>
 
       <br>
-      Example groups.json can be downloaded from: <a href="/examples/groups.json">here</a>
+      Example groups.json can be downloaded from: <a href="./examples/groups.json">here</a>
     </MainText>
   </Page>
 
