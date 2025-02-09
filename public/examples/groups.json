@@ -1,0 +1,142 @@
+[
+  {
+    "Type": "AccountID",
+    "Name": "Owner",
+    "Tag": "<color=#00ffcb>[Owner]</color>",
+    "Permissions": ["*", "bpe.*"],
+    "CustomData": {
+      "Data": {
+        "bpe:format": "<color=#21ff00>[{0}]</color><color=#3498DB>[Owner]</color> <color=#ffffff>{1}-> {2:unsanitized}</color>",
+        "bpe:staffformat": "<color=#aff00f>[STAFF CHAT]</color><color=#ffffff>{1}-> {2:unsanitized}</color>"
+      }
+    },
+    "Members": ["Owner1"],
+    "Inherits": ["Admin"]
+  },
+  {
+    // Administrator
+    "Type": "AccountID",
+    "Name": "Admin",
+    "Tag": "<color=#942EDA>[Administrator]</color>",
+    "Permissions": [
+      /*Default Commands*/
+      "bp.removeJob",
+      "bp.transfer",
+      "bp.unbanAccount",
+      "bp.unbanIP",
+      "bp.environment",
+      "bp.ban",
+      "bp.banAccount",
+      "bp.heal",
+      "bp.playerRecords",
+      "bp.banRecords",
+      "bp.kick",
+      "bp.restrain",
+      "bp.save",
+      "bp.summon",
+      /*Broke Protocol Essentials Commands*/
+      "bpe.kitcreate",
+      "bpe.give",
+      "bpe.lockvehicle",
+      "bpe.repairvehicle",
+      "bpe.slap",
+      "bpe.spawnvehicle",
+      "bpe.warpcreate",
+      "bpe.reload",
+      "bpe.home",
+      "bpe.knockout",
+      "bpe.launch",
+      "bpe.promote",
+      "bpe.teleportcoordinates",
+      "bpe.togglebypass",
+      "bpe.togglespychat",
+      "bpe.togglegodmode",
+      "bpe.warnremove",
+      "bpe.unban",
+      "bpe.ban",
+      "bpe.kill",
+      "bpe.save",
+      "bpe.unban",
+      "bpe.tpahereall",
+      "bpe.arrest",
+      "bpe.back",
+      "bpe.clearwanted",
+      "bpe.disconnect",
+      "bpe.feed",
+      "bpe.free",
+      "bpe.heal",
+      "bpe.info",
+      "bpe.kick",
+      "bpe.receivestaffchat",
+      "bpe.restrain",
+      "bpe.staffchat",
+      "bpe.teleport",
+      "bpe.teleporthere",
+      "bpe.warn",
+      "bpe.warnlist.viewotherplayers",
+      "bpe.warp.staffarea",
+      "bpe.setjob",
+      "bpe.togglemute",
+      // Admin Warps and Kits
+      "bpe.warp.AdminPlace",
+      "bpe.kit.admin"
+
+    ],
+    "CustomData": {
+      "Data": {
+        "bpe:format": "<color=#21ff00>[{0}]<color=#ff00ff>[Administrator]</color> <color=#ffffff>{1}-> {2:unsanitized}</color>"
+      }
+    },
+    "Members": ["Admin1", "Admin2", "Admin3"],
+    "Inherits": []
+  },
+  {
+    // Member
+    "Type": "AccountID",
+    "Name": "Member",
+    "Permissions": [
+      /*Default Commands*/
+      "bp.help",
+      //"bp.voteStart",
+      /*Broke Protocol Essentials Commands*/
+      "bp.help",
+      "bpe.cc.atm",
+      "bpe.discord",
+      "bpe.essentials",
+      "bpe.kit",
+      "bpe.kitlist",
+      "bpe.onlineplayers",
+      "bpe.pmuser",
+      "bpe.replyuser",
+      "bpe.togglechat",
+      "bpe.tpaaccept",
+      "bpe.tpadeny",
+      "bpe.tpauser",
+      "bpe.tpahereuser",
+      "bpe.warnlist",
+      "bpe.warp",
+      "bpe.warplist",
+      "bpe.pay",
+      /*Broke Protocol Essentials Warps*/
+      "bpe.warp.airport", // FORMAT: bpe.warp.warpname
+      /*Broke Protocol Essentials Kits*/
+      "bpe.kit.licenses" // FORMAT: bpe.kit.kitname
+      /*Broke Protocol Essentials Custom Commands*/
+    ],
+    "CustomData": {
+      "Data": {
+        /* BPE Chat format overrides
+          {0} -> ID (eg 12345)
+          {1} -> Username (eg UserR00T)
+          {2} -> Message (eg Hello World) */
+        "bpe:format": "<color=#21ff00>[{0}]</color><color=#ffffff> {1}<color=#706f6f>-></color> {2}</color>",
+        "bpe:format.local": "<color=green>[LOCAL CHAT]</color><color=#ffffff>{1}-> {2}</color>",
+        "bpe:format.local.public": "{2}",
+        "bpe:format.local.job": "{2}",
+        "bpe:format.local.channel": "{2}",
+        "bpe:staffformat": "<color=cyan>[STAFF CHAT]</color><color=#ffffff>{1}-> {2:unsanitized}</color>"
+      }
+    },
+    "Members": ["*"]
+  }
+]

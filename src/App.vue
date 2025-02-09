@@ -32,9 +32,9 @@
         <MainTitle xs>Installing the plugin (v3.0+)</MainTitle>
         <p>
           1. Download the latest version from <a :href="gitFullUrl + 'releases/latest'">here</a>. The file should be
-          named "BPEssentials.dll".
+          named "BPEssentials.dll".<br>
           2. Download BP-CoreLib from <a href="https://github.com/UserR00T/BP-CoreLib/releases/latest">here</a>. This is
-          required by BP Essentials. The file should be named "BP-CoreLib.dll".
+          required by BP Essentials. The file should be named "BP-CoreLib.dll".<br>
           3. Move all 3 just downloaded files to "YourServerFolder/Plugins". Replace if needed. Once done, start your
           server and the files should automatically be generated.
         </p>
@@ -45,6 +45,28 @@
   <Page small title="# Downloads">
     <MainText>Latest download: <a :href="gitFullUrl + 'releases/latest'">v{{ version }}</a>
       View all downloads: <a :href="gitFullUrl + 'releases/'">here</a>
+    </MainText>
+  </Page>
+
+  <Page small title="# Extra Permissions / Example groups.json">
+    <MainText>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(permission, i) in extra_permissions" :key="i">
+            <td>{{ permission.permission }}</td>
+            <td>{{ permission.note }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      Example groups.json can be downloaded from: <a href="/examples/groups.json">here</a>
     </MainText>
   </Page>
 
@@ -125,6 +147,19 @@ export default {
           url: 'https://github.com/PLASMAchicken'
         }
       ],
+      extra_permissions: [
+        {
+          permission: 'bpe.warnlist.viewotherplayers',
+          note: 'Required to view warns of other Players'
+        },
+        {
+          permission: 'bpe.warp.warpname',
+          note: 'Required to be able to /warp warpname'
+        },
+        {
+          permission: 'bpe.kit.kitname',
+          note: 'Required to be able to /kit kitname'
+        }],
       settings: {},
       github: {}
     }
